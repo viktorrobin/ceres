@@ -1,0 +1,2 @@
+Flask==0.8
+tensorflow==1.11.0

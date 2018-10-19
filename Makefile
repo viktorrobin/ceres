@@ -1,13 +1,8 @@
-build: 
-	docker build \
-		--build-arg http_proxy=$(HTTP_PROXY) \
-		--build-arg https_proxy=$(HTTPS_PROXY) \
-		--build-arg ftp_proxy=$(FTP_PROXY) \
-		--build-arg no_proxy=$(NO_PROXY) \
-		-t ceres:v1 \
-		-f docker/dockerfile.model \
-		.
+build-g:
+	cd model
+	gcloud builds submit --config model/conda_build.yaml .
 
+build: 
 	docker build \
 		-t ceres:v1 \
 		-f docker/dockerfile.api \
