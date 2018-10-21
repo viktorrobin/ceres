@@ -7,9 +7,10 @@ COPY . /app
 WORKDIR /app
 
 # Update pip and install flask
-RUN pip install --upgrade pip && \
-    pip install -r requirements.txt
+RUN pip install -r requirements.txt
 
-EXPOSE 5000
-# ENTRYPOINT ["python"]
-# CMD ["ceres_api.py"]
+EXPOSE 8080
+ENV PORT 8080
+
+ENTRYPOINT ["python"]
+CMD ["ceres_api.py"]

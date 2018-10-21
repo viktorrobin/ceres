@@ -4,7 +4,7 @@
 https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask
 https://stackoverflow.com/questions/29104107/upload-image-using-post-form-data-in-python-requests
 http://containertutorials.com/docker-compose/flask-simple-app.html
-
+https://stackoverflow.com/questions/41655946/how-to-send-image-to-flask-server-from-curl-request
 
 ## Build image in GCP
 https://medium.com/google-cloud/introduction-to-google-container-builder-dbe6645f9421

@@ -1,9 +1,12 @@
+PROJECT_ID := $(shell gcloud config get-value project -q)
+
 build:
 	gcloud builds submit --config api_build.yaml .
 
+pull:
+	docker pull gcr.io/$(PROJECT_ID)/ceres-api:v1
+
 start:
 	docker run 	-it --rm  \
-				-p 5000:5000 \
-				-v /Users/victorr/webApplications/ceres/model/:/app/model \
-				-v /Users/victorr/webApplications/ceres/api/:/app/ \
-				gcr.io/ceres-219917/ceres-api:v1
+				-p 5000:8080 \
+				gcr.io/$(PROJECT_ID)/ceres-api:v1

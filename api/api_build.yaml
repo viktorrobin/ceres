@@ -1,6 +1,6 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/ceres-api:v1', '.' ]
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/ceres-api:v2', '.' ]
 images:
-- 'gcr.io/$PROJECT_ID/ceres-api:v1'
+- 'gcr.io/$PROJECT_ID/ceres-api:v2'
 timeout: 660s

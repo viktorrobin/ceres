@@ -1,28 +1,23 @@
 #!flask/bin/python
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
+from catDetector import predict_proba_catInPic
+from PIL import Image
 
 app = Flask(__name__)
 
-tasks = [
-    {
-        'id': 1,
-        'title': u'Buy groceries',
-        'description': u'Milk, Cheese, Pizza, Fruit, Tylenol', 
-        'done': False
-    },
-    {
-        'id': 2,
-        'title': u'Learn Python',
-        'description': u'Need to find a good Python tutorial on the web', 
-        'done': False
-    }
-]
+@app.route('/test', methods=['GET', 'POST'])
+def test_api():
+    return 'Success!'
 
-# @app.route('/todo/api/v1.0/tasks', methods=['GET'])
-@app.route('/api/<path_pic>', methods=['GET', 'POST'])
-def get_tasks(path_pic):
-    from catDetector import predict_proba_catInPic
+@app.route('/api', methods=['GET', 'POST'])
+def get_tasks():
+    print(request)
+    img = Image.open(request.files['image'])
+
+    path_pic = '/tmp/testImageAPI.png'
+    img.save(path_pic)
     proba = predict_proba_catInPic(path_pic)
+
     dicOut = {
         'picture': path_pic,
         'probaCat': float(proba)
@@ -30,4 +25,4 @@ def get_tasks(path_pic):
     return jsonify(dicOut)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000, host='0.0.0.0')
+    app.run(debug=True, port=8080, host='0.0.0.0')

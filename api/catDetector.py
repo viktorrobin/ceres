@@ -73,8 +73,8 @@ def load_labels(label_file):
 
 
 def predict_proba_catInPic(file_name):
-  model_file = "/app/model/retrainedModel_2018-10-14_07-38-57/retrained_graph.pb"
-  label_file = "/app/model/retrainedModel_2018-10-14_07-38-57/retrained_labels.txt"
+  model_file = "/app/model/retrained_graph.pb"
+  label_file = "/app/model/retrained_labels.txt"
   input_height = 299
   input_width = 299
   input_mean = 0
