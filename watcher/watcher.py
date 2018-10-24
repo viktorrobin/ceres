@@ -16,7 +16,7 @@ counter = 0
 
 while True:
     counter += 1
-    
+    print('Iteration {}'.format(counter)) 
     try:
         # file name
         dateStamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
@@ -36,9 +36,7 @@ while True:
         dicOut = ast.literal_eval(r.text)
         proba = dicOut['probaCat']
         
-        print("Probability = {}".format(proba))
-        
-        if proba > 0.9:
+        if proba > 0.98:
             os.system('play vaccum1.mp3')
             #subprocess.Popen(['play', 'vaccum1.mp3'])
             file_name2 = file_name.split('.')[0] + str('_') + str(proba) + '.jpg'
@@ -47,9 +45,6 @@ while True:
         else:
             os.remove(file_name)
     except:
-        print("Error")
-    
-    if counter == 5:
-        break
+        print("Error")k
 
 
