@@ -5,17 +5,15 @@ from picamera import PiCamera
 from time import sleep
 from playsound import playsound
 from datetime import datetime
-import os, subprocess
+import os
 
 print('Starting...')
 
 # sleep(30.)
 
 camera = PiCamera()
-counter = 0
 
 while True:
-    counter += 1
     
     try:
         # file name
@@ -28,7 +26,7 @@ while True:
         camera.stop_preview()
 
         url = 'http://0.0.0.0:5000/api'
-        url = 'http://35.196.12.98:8080/api'
+        url = 'http://35.200.240.45:80/api'
         files = {'image': open(file_name, 'rb')}
         r = requests.post(url, files=files)
         print(r.text)
@@ -38,9 +36,8 @@ while True:
         
         print("Probability = {}".format(proba))
         
-        if proba > 0.9:
-            os.system('play vaccum1.mp3')
-            #subprocess.Popen(['play', 'vaccum1.mp3'])
+        if proba > 0.98:
+            os.system('mpg123 vaccum1.mp3')
             file_name2 = file_name.split('.')[0] + str('_') + str(proba) + '.jpg'
             print(file_name2)
             os.rename(file_name, file_name2)
@@ -49,7 +46,6 @@ while True:
     except:
         print("Error")
     
-    if counter == 5:
-        break
+    
 
 
