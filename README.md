@@ -9,7 +9,8 @@ http://containertutorials.com/docker-compose/flask-simple-app.html
 
 https://stackoverflow.com/questions/41655946/how-to-send-image-to-flask-server-from-curl-request
 
-## Build image in GCP
+
+## Build image in GCP
 
 https://medium.com/google-cloud/introduction-to-google-container-builder-dbe6645f9421
 
